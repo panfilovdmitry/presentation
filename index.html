@@ -602,170 +602,11 @@
             margin-bottom: 20px;
         }
 
-        .installment-plan-btn {
-            background: white;
-            color: #ec4899;
-            border: none;
-            padding: 15px;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 28px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
+        /* (removed old modal and installment-plan-btn styles — now inline in funnel) */
 
-        .installment-plan-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-
-        /* Модальное окно рассрочки */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.7);
-            z-index: 200;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 600px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            animation: modalSlideIn 0.3s ease;
-        }
-
-        @keyframes modalSlideIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #f56565;
-            border: none;
-            color: white;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .modal-close:hover {
-            background: #c53030;
-            transform: rotate(90deg);
-        }
-
-        .modal-content h2 {
-            color: #2d3748;
-            margin-bottom: 25px;
-            font-size: 28px;
-        }
-
-        .installment-subtitle {
-            color: #667eea;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 25px;
-            cursor: pointer;
-            padding: 12px 20px;
-            background: #f0f4ff;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            display: inline-block;
-            user-select: none;
-        }
-
-        .installment-subtitle:hover {
-            background: #e0e8ff;
-            transform: translateX(5px);
-        }
-
-        .installment-subtitle:active {
-            transform: scale(0.98);
-        }
-
-        .installment-details {
-            background: #f7fafc;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 20px;
-        }
-
-        .installment-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            margin-bottom: 10px;
-            background: white;
-            border-radius: 10px;
-            border-left: 4px solid #ec4899;
-        }
-
-        .installment-row:last-child {
-            margin-bottom: 0;
-        }
-
-        .installment-label {
-            font-size: 16px;
-            color: #4a5568;
-        }
-
-        .installment-amount {
-            font-size: 22px;
-            font-weight: 700;
-            color: #ec4899;
-        }
-
-        .installment-note {
-            background: #fff5f7;
-            border-left: 4px solid #ec4899;
-            padding: 15px;
-            border-radius: 8px;
-            color: #4a5568;
-            font-size: 14px;
-            margin-top: 20px;
-        }
+        /* (old global installment styles removed — now only inside .installment-inline) */
 
         /* Кнопки оплаты */
-        .payment-buttons {
-            margin-top: 35px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            align-items: center;
-        }
-
         .pay-btn {
             display: inline-block;
             padding: 18px 40px;
@@ -803,12 +644,185 @@
             transform: translateY(-2px);
         }
 
-        .prepay-note {
-            margin-top: 15px;
-            font-size: 15px;
-            opacity: 0.9;
+        /* Горизонтальный слайдер */
+        .slider-container {
+            margin-top: 35px;
+            position: relative;
+        }
+
+        .slider-viewport {
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.4s ease;
+        }
+
+        .slide {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px;
+            box-sizing: border-box;
+        }
+
+        .slide-label {
+            font-size: 17px;
+            opacity: 0.95;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .slide-hint {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 12px;
+            max-width: 450px;
             line-height: 1.5;
+        }
+
+        .slider-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .slide-call-block {
+            background: rgba(255,255,255,0.15);
+            border-radius: 15px;
+            padding: 25px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            max-width: 450px;
+            text-align: left;
+        }
+
+        .slide-call-icon {
+            font-size: 36px;
+            flex-shrink: 0;
+        }
+
+        .slide-call-text p {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .slide-call-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .slider-nav-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-nav-btn:hover {
+            background: rgba(255,255,255,0.25);
+            border-color: rgba(255,255,255,0.6);
+            color: white;
+        }
+
+        .slider-nav-btn:disabled {
+            opacity: 0.3;
+            cursor: default;
+        }
+
+        .slider-nav-btn:disabled:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.4);
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Внутренняя рассрочка inline */
+        .installment-inline {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            width: 100%;
             max-width: 500px;
+            text-align: left;
+        }
+
+        .installment-inline .installment-subtitle {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            cursor: pointer;
+            padding: 10px 15px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            user-select: none;
+        }
+
+        .installment-inline .installment-subtitle:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        .installment-inline .installment-details {
+            margin-bottom: 15px;
+        }
+
+        .installment-inline .installment-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 10px;
+            border-left: 4px solid rgba(255,255,255,0.5);
+        }
+
+        .installment-inline .installment-label {
+            font-size: 15px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .installment-inline .installment-amount {
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .installment-inline .installment-note {
+            background: rgba(255,255,255,0.1);
+            border-left: 4px solid rgba(255,255,255,0.5);
+            padding: 12px;
+            border-radius: 8px;
+            color: rgba(255,255,255,0.85);
+            font-size: 13px;
+            margin-top: 15px;
+        }
+
+        .installment-note-inline {
+            background: rgba(255,255,255,0.1);
+            border-left: 4px solid rgba(255,255,255,0.5);
+            padding: 12px;
+            border-radius: 8px;
+            color: rgba(255,255,255,0.85);
+            font-size: 13px;
+            margin-top: 15px;
         }
 
         /* Лейбл выбора тарифа */
@@ -948,34 +962,84 @@
 
             <div id="discountBenefitsContainer"></div>
 
-            <div class="payment-buttons">
-                <a class="pay-btn pay-btn-main" id="payFullBtn" href="#" target="_blank">💳 Оплатить со скидкой</a>
-                <a class="pay-btn pay-btn-prepay" id="payPrepayBtn" href="#" target="_blank">🔒 Зафиксировать цену — предоплата 5 000 ₽</a>
-                <div class="prepay-note">Если сейчас не получается оплатить полностью — можно внести предоплату 5 000 ₽ и зафиксировать цену со скидкой. Доплатить можно чуть позже.</div>
+            <!-- СЛАЙДЕР ВОРОНКИ -->
+            <div class="slider-container">
+                <div class="slider-viewport" id="sliderViewport">
+                    <div class="slider-track" id="sliderTrack">
+                        
+                        <!-- СЛАЙД 1: Оплатить со скидкой -->
+                        <div class="slide">
+                            <a class="pay-btn pay-btn-main" id="payFullBtn" href="#" target="_blank">💳 Оплатить со скидкой</a>
+                        </div>
+
+                        <!-- СЛАЙД 2: Банковская рассрочка -->
+                        <div class="slide">
+                            <div class="slide-label">Можно оформить через банковскую рассрочку:</div>
+                            <a class="pay-btn pay-btn-main" id="payInstBank" href="#" target="_blank">💳 Оплатить в рассрочку</a>
+                            <div class="slide-hint">Рассрочка от банка на 6 или 12 месяцев без процентов</div>
+                        </div>
+
+                        <!-- СЛАЙД 3: Предоплата 5000 -->
+                        <div class="slide">
+                            <div class="slide-label">Можно зафиксировать цену со скидкой:</div>
+                            <a class="pay-btn pay-btn-prepay" id="payPrepay1" href="#" target="_blank">🔒 Зафиксировать цену — предоплата 5 000 ₽</a>
+                            <div class="slide-hint">Внесите 5 000 ₽ сейчас, чтобы сохранить скидку. Вам сразу откроется вводная неделя — вы уже начнёте делать первые шаги. Доплатить можно чуть позже.</div>
+                        </div>
+
+                        <!-- СЛАЙД 4: Внутренняя рассрочка на 2 платежа -->
+                        <div class="slide">
+                            <div class="slide-label">Внутренняя рассрочка — 2 платежа:</div>
+                            <div class="installment-inline">
+                                <div class="installment-details" id="installmentPlan2"></div>
+                                <div class="installment-note-inline">
+                                    💡 Внутренняя рассрочка доступна только для первого модуля «Отношения с собой»
+                                </div>
+                            </div>
+                            <a class="pay-btn pay-btn-main" id="payInst2" href="#" target="_blank">💳 Оплатить первый платёж</a>
+                        </div>
+
+                        <!-- СЛАЙД 5: Внутренняя рассрочка на 3 платежа -->
+                        <div class="slide">
+                            <div class="slide-label">Внутренняя рассрочка — 3 платежа:</div>
+                            <div class="installment-inline">
+                                <div class="installment-details" id="installmentPlan3"></div>
+                                <div class="installment-note-inline">
+                                    💡 Внутренняя рассрочка доступна только для первого модуля «Отношения с собой»
+                                </div>
+                            </div>
+                            <a class="pay-btn pay-btn-main" id="payInst3" href="#" target="_blank">💳 Оплатить первый платёж</a>
+                        </div>
+
+                        <!-- СЛАЙД 6: Предоплата 5000 (универсальная) -->
+                        <div class="slide">
+                            <div class="slide-label">Можно зафиксировать цену:</div>
+                            <a class="pay-btn pay-btn-prepay" id="payPrepay2" href="#" target="_blank">🔒 Зафиксировать цену — предоплата 5 000 ₽</a>
+                            <div class="slide-hint">Внесите 5 000 ₽ сейчас, чтобы сохранить скидку. Вам сразу откроется вводная неделя — вы уже начнёте делать первые шаги. А какой именно вариант оплаты подойдёт лучше всего — решим вместе чуть позже.</div>
+                        </div>
+
+                        <!-- СЛАЙД 7: Назначить следующий звонок -->
+                        <div class="slide">
+                            <div class="slide-label">Давайте назначим следующий звонок:</div>
+                            <div class="slide-call-block">
+                                <div class="slide-call-icon">📅</div>
+                                <div class="slide-call-text">
+                                    <p>Предлагаю созвониться через неделю — к тому моменту вы сможете спокойно всё обдумать.</p>
+                                    <p>На звонке мы посмотрим, какой формат и график вам удобнее, и подберём оптимальный вариант.</p>
+                                </div>
+                            </div>
+                            <div class="slide-hint" style="margin-top:20px; font-size:15px; opacity:0.95;">Запишите удобное время — я свяжусь с вами 🙌</div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <!-- Навигация -->
+                <div class="slider-nav">
+                    <button class="slider-nav-btn" id="sliderPrev" onclick="sliderPrev()">⌃</button>
+                    <button class="slider-nav-btn" id="sliderNext" onclick="sliderNext()">⌄</button>
+                </div>
             </div>
 
-            <button class="installment-plan-btn" onclick="openInstallmentModal()">
-                ↓
-            </button>
-        </div>
-
-        <!-- Модальное окно внутренней рассрочки -->
-        <div class="modal-overlay" id="installmentModal" onclick="closeInstallmentModal(event)">
-            <div class="modal-content" onclick="event.stopPropagation()">
-                <button class="modal-close" onclick="closeInstallmentModal()">✕</button>
-                
-                <h2>💳 Внутренняя рассрочка</h2>
-                
-                <div class="installment-subtitle" id="installmentSubtitle" onclick="toggleInstallmentParts()">
-                    Разбиваем цену на 2 платежа
-                </div>
-
-                <div class="installment-details" id="installmentPlan"></div>
-
-                <div class="installment-note">
-                    💡 <strong>Важно:</strong> Внутренняя рассрочка доступна только для первого модуля "Отношения с собой". После его прохождения вы можете приобрести следующий модуль так же по системе внутренней рассрочки.
-                </div>
-            </div>
         </div>
     </div>
 
@@ -1191,10 +1255,15 @@
             vip:    { 1: 'https://edu.fenomenata.ru/oplata_5',  2: 'https://edu.fenomenata.ru/oplata_12', 3: 'https://edu.fenomenata.ru/oplata_13', 4: 'https://edu.fenomenata.ru/oplata_14', 5: 'https://edu.fenomenata.ru/oplata_15' }
         };
 
+        // ===== ССЫЛКИ НА ВНУТРЕННЮЮ РАССРОЧКУ (только М1, первый платёж) =====
+        const installmentLinks = {
+            parts2: { self: 'https://edu.fenomenata.ru/oplata_21', medium: 'https://edu.fenomenata.ru/oplata_36', vip: 'https://edu.fenomenata.ru/oplata_54' },
+            parts3: { self: 'https://edu.fenomenata.ru/oplata_27', medium: 'https://edu.fenomenata.ru/oplata_42', vip: 'https://edu.fenomenata.ru/oplata_51' }
+        };
+
         // ===== СОСТОЯНИЕ =====
         let currentTariff = 'medium';
         let selectedModules = [1];
-        let installmentParts = 2;
         let presentationShown = false;
         let discountCalculated = false;
 
@@ -1313,6 +1382,7 @@
             calculateBtn.textContent = '✓';
             discountCalculated = true;
             
+            resetSlider();
             updatePricingDiscounted();
             
             setTimeout(() => {
@@ -1399,7 +1469,45 @@
             const count = selectedModules.length;
             const link = paymentLinks[currentTariff][count];
             document.getElementById('payFullBtn').href = link;
-            document.getElementById('payPrepayBtn').href = link;
+            document.getElementById('payInstBank').href = link;
+            document.getElementById('payPrepay1').href = link;
+            document.getElementById('payPrepay2').href = link;
+            // Ссылки на внутреннюю рассрочку
+            document.getElementById('payInst2').href = installmentLinks.parts2[currentTariff];
+            document.getElementById('payInst3').href = installmentLinks.parts3[currentTariff];
+        }
+
+        // ===== СЛАЙДЕР =====
+        let currentSlide = 0;
+        const totalSlides = 7;
+
+        function updateSlider() {
+            const track = document.getElementById('sliderTrack');
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            document.getElementById('sliderPrev').disabled = (currentSlide === 0);
+            document.getElementById('sliderNext').disabled = (currentSlide >= totalSlides - 1);
+        }
+
+        function sliderNext() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlider();
+                // Рендерим рассрочки при переходе к слайдам 4 и 5
+                if (currentSlide === 3) renderInstallment2();
+                if (currentSlide === 4) renderInstallment3();
+            }
+        }
+
+        function sliderPrev() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlider();
+            }
+        }
+
+        function resetSlider() {
+            currentSlide = 0;
+            updateSlider();
         }
 
         // ===== СКЛОНЕНИЕ =====
@@ -1409,69 +1517,56 @@
         }
 
         // ===== ВНУТРЕННЯЯ РАССРОЧКА =====
-        function openInstallmentModal() {
-            document.getElementById('installmentModal').classList.add('active');
-            updateInstallmentSubtitle();
-            renderInstallmentPlan();
-        }
-
-        function closeInstallmentModal(event) {
-            if (!event || event.target.classList.contains('modal-overlay') || event.target.classList.contains('modal-close')) {
-                document.getElementById('installmentModal').classList.remove('active');
-            }
-        }
-
-        function toggleInstallmentParts() {
-            installmentParts = installmentParts === 2 ? 3 : 2;
-            updateInstallmentSubtitle();
-            renderInstallmentPlan();
-        }
-
-        function updateInstallmentSubtitle() {
-            document.getElementById('installmentSubtitle').textContent = 
-                `Разбиваем цену на ${installmentParts} платежа`;
-        }
-
-        function renderInstallmentPlan() {
+        function renderInstallment2() {
             const config = tariffsConfig[currentTariff].installmentM1;
-            const container = document.getElementById('installmentPlan');
-            
-            let rows = `
+            const p = config.parts2;
+            document.getElementById('installmentPlan2').innerHTML = `
                 <div class="installment-row">
                     <span class="installment-label">Цена М1 со скидкой 20%:</span>
                     <span class="installment-amount">${config.discountedPrice.toLocaleString('ru-RU')} ₽</span>
+                </div>
+                <div class="installment-row">
+                    <span class="installment-label">1-й платёж (сегодня):</span>
+                    <span class="installment-amount">${p.payment1.toLocaleString('ru-RU')} ₽</span>
+                </div>
+                <div class="installment-row">
+                    <span class="installment-label">2-й платёж (через 4 недели):</span>
+                    <span class="installment-amount">${p.payment2.toLocaleString('ru-RU')} ₽</span>
                 </div>`;
-
-            if (installmentParts === 2) {
-                const p = config.parts2;
-                rows += `
-                    <div class="installment-row">
-                        <span class="installment-label">1-й платёж (сегодня):</span>
-                        <span class="installment-amount">${p.payment1.toLocaleString('ru-RU')} ₽</span>
-                    </div>
-                    <div class="installment-row">
-                        <span class="installment-label">2-й платёж (через 4 недели):</span>
-                        <span class="installment-amount">${p.payment2.toLocaleString('ru-RU')} ₽</span>
-                    </div>`;
-            } else {
-                const p = config.parts3;
-                rows += `
-                    <div class="installment-row">
-                        <span class="installment-label">1-й платёж (сегодня):</span>
-                        <span class="installment-amount">${p.payment1.toLocaleString('ru-RU')} ₽</span>
-                    </div>
-                    <div class="installment-row">
-                        <span class="installment-label">2-й платёж (через 3 недели):</span>
-                        <span class="installment-amount">${p.payment2.toLocaleString('ru-RU')} ₽</span>
-                    </div>
-                    <div class="installment-row">
-                        <span class="installment-label">3-й платёж (через 5 недель):</span>
-                        <span class="installment-amount">${p.payment3.toLocaleString('ru-RU')} ₽</span>
-                    </div>`;
-            }
-            
-            container.innerHTML = rows;
         }
+
+        function renderInstallment3() {
+            const config = tariffsConfig[currentTariff].installmentM1;
+            const p = config.parts3;
+            document.getElementById('installmentPlan3').innerHTML = `
+                <div class="installment-row">
+                    <span class="installment-label">Цена М1 со скидкой 20%:</span>
+                    <span class="installment-amount">${config.discountedPrice.toLocaleString('ru-RU')} ₽</span>
+                </div>
+                <div class="installment-row">
+                    <span class="installment-label">1-й платёж (сегодня):</span>
+                    <span class="installment-amount">${p.payment1.toLocaleString('ru-RU')} ₽</span>
+                </div>
+                <div class="installment-row">
+                    <span class="installment-label">2-й платёж (через 3 недели):</span>
+                    <span class="installment-amount">${p.payment2.toLocaleString('ru-RU')} ₽</span>
+                </div>
+                <div class="installment-row">
+                    <span class="installment-label">3-й платёж (через 5 недель):</span>
+                    <span class="installment-amount">${p.payment3.toLocaleString('ru-RU')} ₽</span>
+                </div>`;
+        }
+        // ===== КЛАВИАТУРНАЯ НАВИГАЦИЯ =====
+        document.addEventListener('keydown', function(e) {
+            if (!discountCalculated) return;
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                sliderNext();
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                sliderPrev();
+            }
+        });
     </script>
 </body>
 </html>
