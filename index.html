@@ -757,6 +757,60 @@
             margin-top: 20px;
         }
 
+        /* Кнопки оплаты */
+        .payment-buttons {
+            margin-top: 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .pay-btn {
+            display: inline-block;
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .pay-btn-main {
+            background: white;
+            color: #ec4899;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .pay-btn-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .pay-btn-prepay {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+
+        .pay-btn-prepay:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .prepay-note {
+            margin-top: 15px;
+            font-size: 15px;
+            opacity: 0.9;
+            line-height: 1.5;
+            max-width: 500px;
+        }
+
         /* Лейбл выбора тарифа */
         .panel-label {
             font-size: 14px;
@@ -893,6 +947,12 @@
             </div>
 
             <div id="discountBenefitsContainer"></div>
+
+            <div class="payment-buttons">
+                <a class="pay-btn pay-btn-main" id="payFullBtn" href="#" target="_blank">💳 Оплатить со скидкой</a>
+                <a class="pay-btn pay-btn-prepay" id="payPrepayBtn" href="#" target="_blank">🔒 Зафиксировать цену — предоплата 5 000 ₽</a>
+                <div class="prepay-note">Если сейчас не получается оплатить полностью — можно внести предоплату 5 000 ₽ и зафиксировать цену со скидкой. Доплатить можно чуть позже.</div>
+            </div>
 
             <button class="installment-plan-btn" onclick="openInstallmentModal()">
                 ↓
@@ -1124,6 +1184,13 @@
         // ===== СКИДКИ (одинаковые для всех тарифов) =====
         const discounts = { 1: 0.20, 2: 0.30, 3: 0.35, 4: 0.38, 5: 0.40 };
 
+        // ===== ССЫЛКИ НА ОПЛАТУ (по количеству модулей) =====
+        const paymentLinks = {
+            self:   { 1: 'https://edu.fenomenata.ru/oplata_1',  2: 'https://edu.fenomenata.ru/oplata_2',  3: 'https://edu.fenomenata.ru/oplata_3',  4: 'https://edu.fenomenata.ru/oplata_6',  5: 'https://edu.fenomenata.ru/oplata_7' },
+            medium: { 1: 'https://edu.fenomenata.ru/oplata_4',  2: 'https://edu.fenomenata.ru/oplata_8',  3: 'https://edu.fenomenata.ru/oplata_9',  4: 'https://edu.fenomenata.ru/oplata_10', 5: 'https://edu.fenomenata.ru/oplata_11' },
+            vip:    { 1: 'https://edu.fenomenata.ru/oplata_5',  2: 'https://edu.fenomenata.ru/oplata_12', 3: 'https://edu.fenomenata.ru/oplata_13', 4: 'https://edu.fenomenata.ru/oplata_14', 5: 'https://edu.fenomenata.ru/oplata_15' }
+        };
+
         // ===== СОСТОЯНИЕ =====
         let currentTariff = 'medium';
         let selectedModules = [1];
@@ -1322,6 +1389,17 @@
             const savingsStr = `${savings.toLocaleString('ru-RU')} ₽`;
             const discountStr = `${Math.round(discount * 100)}%`;
             document.getElementById('discountBenefitsContainer').innerHTML = config.discountBenefitsHTML(savingsStr, discountStr);
+
+            // Обновить ссылки на кнопках оплаты
+            updatePaymentButtons();
+        }
+
+        // ===== ОБНОВЛЕНИЕ КНОПОК ОПЛАТЫ =====
+        function updatePaymentButtons() {
+            const count = selectedModules.length;
+            const link = paymentLinks[currentTariff][count];
+            document.getElementById('payFullBtn').href = link;
+            document.getElementById('payPrepayBtn').href = link;
         }
 
         // ===== СКЛОНЕНИЕ =====
