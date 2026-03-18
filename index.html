@@ -40,7 +40,6 @@
             font-size: 18px;
         }
 
-        /* Выбор тарифа */
         .tariff-selector {
             display: flex;
             gap: 10px;
@@ -154,7 +153,6 @@
             display: flex;
         }
 
-        /* Презентация для клиента */
         .client-presentation {
             display: none;
             max-width: 1000px;
@@ -203,7 +201,6 @@
             border-bottom: 3px solid #667eea;
         }
 
-        /* Что входит / не входит */
         .features-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -265,7 +262,6 @@
             color: #742a2a;
         }
 
-        /* Модули */
         .modules-list {
             margin-top: 30px;
         }
@@ -380,7 +376,6 @@
             line-height: 1.8;
         }
 
-        /* Ценовой блок БЕЗ скидки */
         .pricing-section-initial {
             background: white;
             text-align: center;
@@ -435,7 +430,6 @@
             transform: none;
         }
 
-        /* Ценовой блок СО СКИДКОЙ */
         .pricing-section-discounted {
             background: linear-gradient(135deg, #ec4899 0%, #f472b6 50%, #ec4899 100%);
             color: white;
@@ -520,7 +514,6 @@
             font-weight: 700;
         }
 
-        /* Блок бонуса */
         .bonus-block {
             background: white;
             border: 2px solid #667eea;
@@ -602,11 +595,6 @@
             margin-bottom: 20px;
         }
 
-        /* (removed old modal and installment-plan-btn styles — now inline in funnel) */
-
-        /* (old global installment styles removed — now only inside .installment-inline) */
-
-        /* Кнопки оплаты */
         .pay-btn {
             display: inline-block;
             padding: 18px 40px;
@@ -644,7 +632,6 @@
             transform: translateY(-2px);
         }
 
-        /* Горизонтальный слайдер */
         .slider-container {
             margin-top: 35px;
             position: relative;
@@ -750,7 +737,6 @@
             color: rgba(255,255,255,0.7);
         }
 
-        /* Внутренняя рассрочка inline */
         .installment-inline {
             background: rgba(255,255,255,0.1);
             border-radius: 15px;
@@ -805,16 +791,6 @@
             color: white;
         }
 
-        .installment-inline .installment-note {
-            background: rgba(255,255,255,0.1);
-            border-left: 4px solid rgba(255,255,255,0.5);
-            padding: 12px;
-            border-radius: 8px;
-            color: rgba(255,255,255,0.85);
-            font-size: 13px;
-            margin-top: 15px;
-        }
-
         .installment-note-inline {
             background: rgba(255,255,255,0.1);
             border-left: 4px solid rgba(255,255,255,0.5);
@@ -825,7 +801,6 @@
             margin-top: 15px;
         }
 
-        /* Лейбл выбора тарифа */
         .panel-label {
             font-size: 14px;
             opacity: 0.9;
@@ -833,54 +808,27 @@
         }
 
         @media (max-width: 768px) {
-            .diagnostician-panel {
-                padding: 15px;
-            }
-
-            .module-selector button,
-            .tariff-selector button {
-                padding: 8px 15px;
-                font-size: 14px;
-            }
-
-            .header h1 {
-                font-size: 32px;
-            }
-
-            .section {
-                padding: 25px 20px;
-            }
-
-            .module-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .details-btn {
-                margin-top: 10px;
-            }
+            .diagnostician-panel { padding: 15px; }
+            .module-selector button, .tariff-selector button { padding: 8px 15px; font-size: 14px; }
+            .header h1 { font-size: 32px; }
+            .section { padding: 25px 20px; }
+            .module-header { flex-direction: column; align-items: flex-start; }
+            .details-btn { margin-top: 10px; }
         }
     </style>
 </head>
 <body>
-    <!-- Кнопка для открытия панели -->
-    <button class="toggle-panel-btn" id="togglePanelBtn" onclick="togglePanel()">
-        ↓
-    </button>
+    <button class="toggle-panel-btn" id="togglePanelBtn" onclick="togglePanel()">↓</button>
 
-    <!-- Панель настроек диагноста -->
     <div class="diagnostician-panel" id="diagnosticianPanel">
         <h3>⚙️ Настройки диагноста</h3>
-        
         <div class="panel-label">Выберите тариф:</div>
         <div class="tariff-selector">
             <button class="tariff-toggle" data-tariff="self" onclick="selectTariff('self')">Самостоятельный</button>
             <button class="tariff-toggle active" data-tariff="medium" onclick="selectTariff('medium')">Меняюсь с Татьяной</button>
             <button class="tariff-toggle" data-tariff="vip" onclick="selectTariff('vip')">Мне самое лучшее</button>
         </div>
-
         <hr class="panel-separator">
-
         <div class="panel-label">Выберите модули:</div>
         <div class="module-selector">
             <button class="module-toggle active" data-module="1">Модуль 1 (обязательный)</button>
@@ -889,84 +837,46 @@
             <button class="module-toggle" data-module="4">Модуль 4</button>
             <button class="module-toggle" data-module="5">Модуль 5</button>
         </div>
-        
-        <button class="show-presentation-btn" onclick="showPresentation()">
-            ▶ Показать презентацию
-        </button>
+        <button class="show-presentation-btn" onclick="showPresentation()">▶ Показать презентацию</button>
     </div>
 
-    <!-- Презентация для клиента -->
     <div class="client-presentation" id="clientPresentation">
         <div class="header">
             <h1>🌟 Расслабленная и желанная</h1>
             <p id="tariffSubtitle">Тариф "Меняюсь с Татьяной"</p>
         </div>
-
-        <!-- Как проходит обучение -->
         <div class="section">
             <h2>📚 Как проходит обучение</h2>
             <div id="featuresContainer"></div>
         </div>
-
-        <!-- Модули программы -->
         <div class="section">
             <h2>📖 Программа обучения</h2>
             <div class="modules-list" id="modulesList"></div>
         </div>
-
-        <!-- Цена БЕЗ скидки -->
         <div class="section pricing-section-initial" id="pricingInitial">
             <h2>💎 Стоимость программы</h2>
-            <div class="price-info-row">
-                <span>Стоимость программы:</span>
-                <span class="price-value" id="priceNoDiscount">42 000 ₽</span>
-            </div>
-            <div class="price-info-row">
-                <span>Продолжительность:</span>
-                <span class="price-value" id="durationInfo">6 недель</span>
-            </div>
-            <div class="price-info-row">
-                <span>Рассрочка (6 месяцев):</span>
-                <span class="price-value" id="installmentNoDiscount6">7 000 ₽/мес</span>
-            </div>
-            <div class="price-info-row">
-                <span>Рассрочка (12 месяцев):</span>
-                <span class="price-value" id="installmentNoDiscount12">3 500 ₽/мес</span>
-            </div>
-            
-            <button class="calculate-discount-btn" id="calculateBtn" onclick="calculateDiscount()">
-                ↓
-            </button>
+            <div class="price-info-row"><span>Стоимость программы:</span><span class="price-value" id="priceNoDiscount">42 000 ₽</span></div>
+            <div class="price-info-row"><span>Продолжительность:</span><span class="price-value" id="durationInfo">6 недель</span></div>
+            <div class="price-info-row"><span>Рассрочка (6 месяцев):</span><span class="price-value" id="installmentNoDiscount6">7 000 ₽/мес</span></div>
+            <div class="price-info-row"><span>Рассрочка (12 месяцев):</span><span class="price-value" id="installmentNoDiscount12">3 500 ₽/мес</span></div>
+            <button class="calculate-discount-btn" id="calculateBtn" onclick="calculateDiscount()">↓</button>
         </div>
-
-        <!-- Цена СО СКИДКОЙ -->
         <div class="pricing-section-discounted" id="pricingDiscounted">
             <div class="discount-badge" id="discountBadge">СКИДКА 20%</div>
             <h2>Специальная цена при оплате на диагностике:</h2>
-            
             <div class="price-comparison">
                 <div class="price-old" id="priceOld">42 000 ₽</div>
                 <div class="price-display" id="priceNew">33 600 ₽</div>
             </div>
-            
             <div class="installment-options">
-                <div class="installment-option">
-                    <span>Рассрочка (6 месяцев):</span>
-                    <strong id="installment6">5 600 ₽/мес</strong>
-                </div>
-                <div class="installment-option">
-                    <span>Рассрочка (12 месяцев):</span>
-                    <strong id="installment12">2 800 ₽/мес</strong>
-                </div>
+                <div class="installment-option"><span>Рассрочка (6 месяцев):</span><strong id="installment6">5 600 ₽/мес</strong></div>
+                <div class="installment-option"><span>Рассрочка (12 месяцев):</span><strong id="installment12">2 800 ₽/мес</strong></div>
             </div>
-
             <div id="discountBenefitsContainer"></div>
-
-            <!-- СЛАЙДЕР ВОРОНКИ -->
             <div class="slider-container">
                 <div class="slider-viewport" id="sliderViewport">
                     <div class="slider-track" id="sliderTrack">
-                        
+
                         <!-- СЛАЙД 1: Оплатить со скидкой -->
                         <div class="slide">
                             <a class="pay-btn pay-btn-main" id="payFullBtn" href="#" target="_blank">💳 Оплатить со скидкой</a>
@@ -991,9 +901,7 @@
                             <div class="slide-label">Внутренняя рассрочка — 2 платежа:</div>
                             <div class="installment-inline">
                                 <div class="installment-details" id="installmentPlan2"></div>
-                                <div class="installment-note-inline">
-                                    💡 Внутренняя рассрочка доступна только для первого модуля «Отношения с собой»
-                                </div>
+                                <div class="installment-note-inline">💡 Внутренняя рассрочка доступна только для первого модуля «Отношения с собой»</div>
                             </div>
                             <a class="pay-btn pay-btn-main" id="payInst2" href="#" target="_blank">💳 Оплатить первый платёж</a>
                         </div>
@@ -1003,9 +911,7 @@
                             <div class="slide-label">Внутренняя рассрочка — 3 платежа:</div>
                             <div class="installment-inline">
                                 <div class="installment-details" id="installmentPlan3"></div>
-                                <div class="installment-note-inline">
-                                    💡 Внутренняя рассрочка доступна только для первого модуля «Отношения с собой»
-                                </div>
+                                <div class="installment-note-inline">💡 Внутренняя рассрочка доступна только для первого модуля «Отношения с собой»</div>
                             </div>
                             <a class="pay-btn pay-btn-main" id="payInst3" href="#" target="_blank">💳 Оплатить первый платёж</a>
                         </div>
@@ -1032,24 +938,18 @@
 
                     </div>
                 </div>
-                
-                <!-- Навигация -->
                 <div class="slider-nav">
                     <button class="slider-nav-btn" id="sliderPrev" onclick="sliderPrev()">⌃</button>
                     <button class="slider-nav-btn" id="sliderNext" onclick="sliderNext()">⌄</button>
                 </div>
             </div>
-
         </div>
     </div>
 
     <script>
-        // ===== КОНТЕНТ МОДУЛЕЙ (одинаковый для всех тарифов) =====
         const modulesContent = {
             1: {
-                title: 'Модуль «Отношения с собой»',
-                duration: '6 недель',
-                weeks: 6,
+                title: 'Модуль «Отношения с собой»', duration: '6 недель', weeks: 6,
                 content: [
                     "<strong>Неделя 1: Фильтры прошлого: как они мешают строить здоровые отношения</strong><br>Вы выясните, что именно мешает вам построить здоровые отношения — какие убеждения, страхи и паттерны из прошлого блокируют вашу способность быть счастливой в паре.",
                     "<strong>Неделя 2: Почему женщины становятся 'неведимками'?</strong><br>Вы найдёте свою внутреннюю ценность и поймёте, почему раньше чувствовали себя незаметной. Научитесь видеть и ценить себя, чтобы ваш мужчина тоже начал вас замечать и ценить по-новому.",
@@ -1061,9 +961,7 @@
                 result: "Вы научитесь чувствовать себя расслабленной и уверенной, перестанете постоянно себя критиковать и начнёте получать удовольствие от жизни. Отношения с партнёром станут легче, потому что вы перестанете быть в постоянном напряжении."
             },
             2: {
-                title: 'Модуль «Коммуникация с мужчиной»',
-                duration: '4 недели',
-                weeks: 4,
+                title: 'Модуль «Коммуникация с мужчиной»', duration: '4 недели', weeks: 4,
                 content: [
                     "<strong>Урок 1: Понимать мужчин: ключ к гармоничным отношениям</strong><br>Вы изучите основы мужской психологии — поймёте, как мужчина думает, что для него важно, и почему он реагирует не так, как вы ожидаете. Это станет фундаментом для гармоничного общения.",
                     "<strong>Урок 2: Как говорить так, чтобы мужчина тебя слышал?</strong><br>Вы научитесь говорить о своих чувствах и потребностях так, чтобы мужчина не закрывался, а действительно слышал вас. Без упрёков, претензий и обид — экологично и эффективно.",
@@ -1075,9 +973,7 @@
                 result: "Вы научитесь выражать свои потребности так, чтобы мужчина хотел их выполнять. Конфликты перестанут заканчиваться ссорами, а начнут укреплять отношения. Партнёр начнёт лучше вас понимать и слышать."
             },
             3: {
-                title: 'Модуль «Страсть и желание»',
-                duration: '4 недели',
-                weeks: 4,
+                title: 'Модуль «Страсть и желание»', duration: '4 недели', weeks: 4,
                 content: [
                     "<strong>Урок 1: Почему угасают чувства? — И как их вернуть, не устраивая драмы</strong><br>Вы найдёте точки угасания страсти — поймёте, что именно привело к охлаждению в отношениях, и научитесь возвращать интерес и влечение без скандалов, упрёков и давления на партнёра.",
                     "<strong>Урок 2: Как стать женщиной, в которую он влюбится</strong><br>Вы освоите искусство флирта — научитесь быть игривой, притягательной и интересной для своего мужчины. Вернёте ту лёгкость и магию, которая была в начале отношений.",
@@ -1089,9 +985,7 @@
                 result: "Вы снова почувствуете себя желанной женщиной, а не просто мамой и хозяйкой. Вернётся интерес друг к другу, интимная жизнь станет ярче. Партнёр снова начнёт видеть в вас женщину, а не только функцию."
             },
             4: {
-                title: 'Модуль «Ресурсы и вложения»',
-                duration: '4 недели',
-                weeks: 4,
+                title: 'Модуль «Ресурсы и вложения»', duration: '4 недели', weeks: 4,
                 content: [
                     "<strong>Урок 1: Как получать подарки, деньги и заботу с удовольствием?</strong><br>Вы избавитесь от страхов и вины за принятие заботы — научитесь принимать помощь, подарки и внимание мужчины легко и с благодарностью, без чувства, что вы что-то должны или недостойны этого.",
                     "<strong>Урок 2: Как понять, что мужчина точно не твой — и не терять на него время?</strong><br>Вы разовьёте чутьё на мужскую незрелость — научитесь быстро распознавать признаки того, что мужчина не готов вкладываться в отношения, и не будете тратить время и энергию на тех, кто не способен заботиться.",
@@ -1103,9 +997,7 @@
                 result: "Мужчина снова начнёт о вас заботиться, дарить подарки, уделять внимание. Вы перестанете всё тянуть на себе и научитесь принимать его вклад. Отношения станут более сбалансированными."
             },
             5: {
-                title: 'Модуль «Цели и будущее»',
-                duration: '4 недели',
-                weeks: 4,
+                title: 'Модуль «Цели и будущее»', duration: '4 недели', weeks: 4,
                 content: [
                     "<strong>Урок 1: Почему мужчина не делает шаги?</strong><br>Вы поймёте мужскую психологию и причины, которые заставляют мужчин двигаться вперёд — узнаете, что на самом деле мотивирует или блокирует мужчину в развитии отношений, и как учитывать эти особенности.",
                     "<strong>Урок 2: Как перестать ждать и начать управлять динамикой отношений</strong><br>Вы выйдете из позиции ожидания и примете ответственность в своей зоне — перестанете пассивно ждать, пока мужчина что-то решит, и научитесь влиять на динамику отношений из своей женской силы.",
@@ -1118,7 +1010,6 @@
             }
         };
 
-        // ===== КОНФИГУРАЦИЯ ТАРИФОВ =====
         const tariffsConfig = {
             self: {
                 name: 'Тариф "Самостоятельный"',
@@ -1245,84 +1136,81 @@
             }
         };
 
-        // ===== СКИДКИ (одинаковые для всех тарифов) =====
         const discounts = { 1: 0.20, 2: 0.30, 3: 0.35, 4: 0.38, 5: 0.40 };
 
-        // ===== ССЫЛКИ НА ОПЛАТУ (по количеству модулей) =====
+        // ===== ССЫЛКИ НА ОПЛАТУ (полная оплата + предоплата) — оригинальные =====
         const paymentLinks = {
             self:   { 1: 'https://edu.fenomenata.ru/oplata_1',  2: 'https://edu.fenomenata.ru/oplata_2',  3: 'https://edu.fenomenata.ru/oplata_3',  4: 'https://edu.fenomenata.ru/oplata_6',  5: 'https://edu.fenomenata.ru/oplata_7' },
             medium: { 1: 'https://edu.fenomenata.ru/oplata_4',  2: 'https://edu.fenomenata.ru/oplata_8',  3: 'https://edu.fenomenata.ru/oplata_9',  4: 'https://edu.fenomenata.ru/oplata_10', 5: 'https://edu.fenomenata.ru/oplata_11' },
             vip:    { 1: 'https://edu.fenomenata.ru/oplata_5',  2: 'https://edu.fenomenata.ru/oplata_12', 3: 'https://edu.fenomenata.ru/oplata_13', 4: 'https://edu.fenomenata.ru/oplata_14', 5: 'https://edu.fenomenata.ru/oplata_15' }
         };
 
-        // ===== ССЫЛКИ НА ВНУТРЕННЮЮ РАССРОЧКУ (только М1, первый платёж) =====
+        // ===== ССЫЛКИ БАНКОВСКОЙ РАССРОЧКИ (payInstBank) — НОВЫЕ fenomenata.ter-pay.ru =====
+        const installmentBankLinks = {
+            self: {
+                1: 'https://fenomenata.ter-pay.ru/d/019ce1db-f011-7235-975e-17a9fbb21818',
+                2: 'https://fenomenata.ter-pay.ru/d/019ce1dc-5033-71a7-918a-2227525c2651',
+                3: 'https://fenomenata.ter-pay.ru/d/019ce1dc-9aac-7324-8c4e-ea56be90f6cf',
+                4: 'https://fenomenata.ter-pay.ru/d/019ce1dd-0aa7-7058-986e-bc945753a429',
+                5: 'https://fenomenata.ter-pay.ru/d/019ce1dd-588b-735b-aa43-4ac1d39d0a5a'
+            },
+            medium: {
+                1: 'https://fenomenata.ter-pay.ru/d/019ce1dd-db4b-73c9-b394-80149c5d8a20',
+                2: 'https://fenomenata.ter-pay.ru/d/019ce1de-1f8b-70b2-9e80-caafc246cc98',
+                3: 'https://fenomenata.ter-pay.ru/d/019ce1de-6c1a-7186-802d-5bfe0ad28bfe',
+                4: 'https://fenomenata.ter-pay.ru/d/019ce1de-b047-7058-80d1-c4d0b7b3fb3e',
+                5: 'https://fenomenata.ter-pay.ru/d/019ce1df-06b0-70c6-b2da-63607fd87802'
+            },
+            vip: {
+                1: 'https://fenomenata.ter-pay.ru/d/019ce1df-9fa8-72f7-836d-dcf12828f109',
+                2: 'https://fenomenata.ter-pay.ru/d/019ce1e2-e167-7249-a9ba-efb3c3130909',
+                3: 'https://fenomenata.ter-pay.ru/d/019ce1e3-2fe1-7332-b220-f1db9ef65d63',
+                4: 'https://fenomenata.ter-pay.ru/d/019ce1e3-709c-7341-ae9b-d004e10c6cbf',
+                5: 'https://fenomenata.ter-pay.ru/d/019ce1e3-b0a8-73ee-b903-8266e8b31637'
+            }
+        };
+
+        // ===== ССЫЛКИ ВНУТРЕННЕЙ РАССРОЧКИ — оригинальные =====
         const installmentLinks = {
             parts2: { self: 'https://edu.fenomenata.ru/oplata_21', medium: 'https://edu.fenomenata.ru/oplata_36', vip: 'https://edu.fenomenata.ru/oplata_54' },
             parts3: { self: 'https://edu.fenomenata.ru/oplata_27', medium: 'https://edu.fenomenata.ru/oplata_42', vip: 'https://edu.fenomenata.ru/oplata_51' }
         };
 
-        // ===== СОСТОЯНИЕ =====
         let currentTariff = 'medium';
         let selectedModules = [1];
         let presentationShown = false;
         let discountCalculated = false;
 
-        // ===== ПОЛУЧИТЬ ДАННЫЕ МОДУЛЯ С ЦЕНОЙ ТЕКУЩЕГО ТАРИФА =====
         function getModulesData() {
             const prices = tariffsConfig[currentTariff].prices;
             const data = {};
             for (let id = 1; id <= 5; id++) {
-                data[id] = {
-                    ...modulesContent[id],
-                    basePrice: prices[id]
-                };
+                data[id] = { ...modulesContent[id], basePrice: prices[id] };
             }
             return data;
         }
 
-        // ===== ВЫБОР ТАРИФА =====
         function selectTariff(tariffId) {
             currentTariff = tariffId;
-            
-            // Обновить кнопки
             document.querySelectorAll('.tariff-toggle').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.tariff === tariffId);
             });
-
-            // Если презентация уже показана — перерендерить всё
-            if (presentationShown) {
-                renderFullPresentation();
-            }
+            if (presentationShown) renderFullPresentation();
         }
 
-        // ===== ПОЛНЫЙ РЕНДЕР ПРЕЗЕНТАЦИИ =====
         function renderFullPresentation() {
             const config = tariffsConfig[currentTariff];
-            
-            // Заголовок тарифа
             document.getElementById('tariffSubtitle').textContent = config.name;
-            
-            // Фичи
             document.getElementById('featuresContainer').innerHTML = config.featuresHTML;
-            
-            // Модули
             renderModules();
-            
-            // Цены
             updatePricingInitial();
-            
-            // Скидка
-            if (discountCalculated) {
-                updatePricingDiscounted();
-            }
+            if (discountCalculated) updatePricingDiscounted();
         }
 
-        // ===== ПЕРЕКЛЮЧЕНИЕ МОДУЛЕЙ =====
         document.querySelectorAll('.module-toggle').forEach(btn => {
             btn.addEventListener('click', function() {
                 const moduleId = parseInt(this.dataset.module);
                 if (moduleId === 1) return;
-                
                 if (selectedModules.includes(moduleId)) {
                     selectedModules = selectedModules.filter(m => m !== moduleId);
                     this.classList.remove('active');
@@ -1331,18 +1219,14 @@
                     selectedModules.sort((a, b) => a - b);
                     this.classList.add('active');
                 }
-
                 if (presentationShown) {
                     renderModules();
                     updatePricingInitial();
-                    if (discountCalculated) {
-                        updatePricingDiscounted();
-                    }
+                    if (discountCalculated) updatePricingDiscounted();
                 }
             });
         });
 
-        // ===== ПАНЕЛЬ ДИАГНОСТА =====
         function togglePanel() {
             const panel = document.getElementById('diagnosticianPanel');
             const btn = document.getElementById('togglePanelBtn');
@@ -1350,47 +1234,34 @@
             btn.textContent = panel.classList.contains('hidden') ? '↓' : '↑';
         }
 
-        // ===== ПОКАЗАТЬ ПРЕЗЕНТАЦИЮ =====
         function showPresentation() {
             presentationShown = true;
             discountCalculated = false;
-            
-            // Сбросить кнопку скидки
             const calculateBtn = document.getElementById('calculateBtn');
             calculateBtn.disabled = false;
             calculateBtn.textContent = '↓';
-            
-            // Скрыть блок скидки
             document.getElementById('pricingDiscounted').classList.remove('visible');
-            
             renderFullPresentation();
-            
             document.getElementById('clientPresentation').classList.add('active');
             document.getElementById('clientPresentation').scrollIntoView({ behavior: 'smooth' });
-            
             document.getElementById('diagnosticianPanel').classList.add('hidden');
             document.getElementById('togglePanelBtn').classList.add('visible');
         }
 
-        // ===== РАССЧИТАТЬ СКИДКУ =====
         function calculateDiscount() {
             const discountedSection = document.getElementById('pricingDiscounted');
             const calculateBtn = document.getElementById('calculateBtn');
-            
             discountedSection.classList.add('visible');
             calculateBtn.disabled = true;
             calculateBtn.textContent = '✓';
             discountCalculated = true;
-            
             resetSlider();
             updatePricingDiscounted();
-            
             setTimeout(() => {
                 discountedSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 100);
         }
 
-        // ===== РЕНДЕР МОДУЛЕЙ =====
         function renderModules() {
             const modulesData = getModulesData();
             const container = document.getElementById('modulesList');
@@ -1413,31 +1284,24 @@
                                 <p>${module.result}</p>
                             </div>
                         </div>
-                    </div>
-                `;
+                    </div>`;
             }).join('');
         }
 
         function toggleDetails(moduleId) {
-            const details = document.getElementById(`details-${moduleId}`);
-            details.classList.toggle('active');
+            document.getElementById(`details-${moduleId}`).classList.toggle('active');
         }
 
-        // ===== ЦЕНЫ БЕЗ СКИДКИ =====
         function updatePricingInitial() {
             const modulesData = getModulesData();
             const totalPrice = selectedModules.reduce((sum, id) => sum + modulesData[id].basePrice, 0);
             const totalWeeks = selectedModules.reduce((sum, id) => sum + modulesData[id].weeks, 0);
-            const installment6 = Math.round(totalPrice / 6);
-            const installment12 = Math.round(totalPrice / 12);
-
             document.getElementById('priceNoDiscount').textContent = `${totalPrice.toLocaleString('ru-RU')} ₽`;
             document.getElementById('durationInfo').textContent = `${totalWeeks} ${getDeclension(totalWeeks, ['неделя', 'недели', 'недель'])}`;
-            document.getElementById('installmentNoDiscount6').textContent = `${installment6.toLocaleString('ru-RU')} ₽/мес`;
-            document.getElementById('installmentNoDiscount12').textContent = `${installment12.toLocaleString('ru-RU')} ₽/мес`;
+            document.getElementById('installmentNoDiscount6').textContent = `${Math.round(totalPrice / 6).toLocaleString('ru-RU')} ₽/мес`;
+            document.getElementById('installmentNoDiscount12').textContent = `${Math.round(totalPrice / 12).toLocaleString('ru-RU')} ₽/мес`;
         }
 
-        // ===== ЦЕНЫ СО СКИДКОЙ =====
         function updatePricingDiscounted() {
             const modulesData = getModulesData();
             const count = selectedModules.length;
@@ -1445,45 +1309,38 @@
             const discount = discounts[count];
             const discountedPrice = Math.round(totalPrice * (1 - discount));
             const savings = totalPrice - discountedPrice;
-            const installment6 = Math.round(discountedPrice / 6);
-            const installment12 = Math.round(discountedPrice / 12);
-
             document.getElementById('discountBadge').textContent = `СКИДКА ${Math.round(discount * 100)}%`;
             document.getElementById('priceOld').textContent = `${totalPrice.toLocaleString('ru-RU')} ₽`;
             document.getElementById('priceNew').textContent = `${discountedPrice.toLocaleString('ru-RU')} ₽`;
-            document.getElementById('installment6').textContent = `${installment6.toLocaleString('ru-RU')} ₽/мес`;
-            document.getElementById('installment12').textContent = `${installment12.toLocaleString('ru-RU')} ₽/мес`;
-
-            // Рендер блока бенефитов (зависит от тарифа)
+            document.getElementById('installment6').textContent = `${Math.round(discountedPrice / 6).toLocaleString('ru-RU')} ₽/мес`;
+            document.getElementById('installment12').textContent = `${Math.round(discountedPrice / 12).toLocaleString('ru-RU')} ₽/мес`;
             const config = tariffsConfig[currentTariff];
-            const savingsStr = `${savings.toLocaleString('ru-RU')} ₽`;
-            const discountStr = `${Math.round(discount * 100)}%`;
-            document.getElementById('discountBenefitsContainer').innerHTML = config.discountBenefitsHTML(savingsStr, discountStr);
-
-            // Обновить ссылки на кнопках оплаты
+            document.getElementById('discountBenefitsContainer').innerHTML = config.discountBenefitsHTML(
+                `${savings.toLocaleString('ru-RU')} ₽`,
+                `${Math.round(discount * 100)}%`
+            );
             updatePaymentButtons();
         }
 
-        // ===== ОБНОВЛЕНИЕ КНОПОК ОПЛАТЫ =====
         function updatePaymentButtons() {
             const count = selectedModules.length;
             const link = paymentLinks[currentTariff][count];
+            // Полная оплата и предоплаты — оригинальные ссылки edu.fenomenata.ru
             document.getElementById('payFullBtn').href = link;
-            document.getElementById('payInstBank').href = link;
             document.getElementById('payPrepay1').href = link;
             document.getElementById('payPrepay2').href = link;
-            // Ссылки на внутреннюю рассрочку
+            // Банковская рассрочка (слайд 2) — НОВЫЕ ссылки fenomenata.ter-pay.ru
+            document.getElementById('payInstBank').href = installmentBankLinks[currentTariff][count];
+            // Внутренняя рассрочка — оригинальные ссылки edu.fenomenata.ru
             document.getElementById('payInst2').href = installmentLinks.parts2[currentTariff];
             document.getElementById('payInst3').href = installmentLinks.parts3[currentTariff];
         }
 
-        // ===== СЛАЙДЕР =====
         let currentSlide = 0;
         const totalSlides = 7;
 
         function updateSlider() {
-            const track = document.getElementById('sliderTrack');
-            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            document.getElementById('sliderTrack').style.transform = `translateX(-${currentSlide * 100}%)`;
             document.getElementById('sliderPrev').disabled = (currentSlide === 0);
             document.getElementById('sliderNext').disabled = (currentSlide >= totalSlides - 1);
         }
@@ -1492,80 +1349,45 @@
             if (currentSlide < totalSlides - 1) {
                 currentSlide++;
                 updateSlider();
-                // Рендерим рассрочки при переходе к слайдам 4 и 5
                 if (currentSlide === 3) renderInstallment2();
                 if (currentSlide === 4) renderInstallment3();
             }
         }
 
         function sliderPrev() {
-            if (currentSlide > 0) {
-                currentSlide--;
-                updateSlider();
-            }
+            if (currentSlide > 0) { currentSlide--; updateSlider(); }
         }
 
-        function resetSlider() {
-            currentSlide = 0;
-            updateSlider();
-        }
+        function resetSlider() { currentSlide = 0; updateSlider(); }
 
-        // ===== СКЛОНЕНИЕ =====
         function getDeclension(number, words) {
             const cases = [2, 0, 1, 1, 1, 2];
             return words[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[Math.min(number % 10, 5)]];
         }
 
-        // ===== ВНУТРЕННЯЯ РАССРОЧКА =====
         function renderInstallment2() {
             const config = tariffsConfig[currentTariff].installmentM1;
             const p = config.parts2;
             document.getElementById('installmentPlan2').innerHTML = `
-                <div class="installment-row">
-                    <span class="installment-label">Цена М1 со скидкой 20%:</span>
-                    <span class="installment-amount">${config.discountedPrice.toLocaleString('ru-RU')} ₽</span>
-                </div>
-                <div class="installment-row">
-                    <span class="installment-label">1-й платёж (сегодня):</span>
-                    <span class="installment-amount">${p.payment1.toLocaleString('ru-RU')} ₽</span>
-                </div>
-                <div class="installment-row">
-                    <span class="installment-label">2-й платёж (через 4 недели):</span>
-                    <span class="installment-amount">${p.payment2.toLocaleString('ru-RU')} ₽</span>
-                </div>`;
+                <div class="installment-row"><span class="installment-label">Цена М1 со скидкой 20%:</span><span class="installment-amount">${config.discountedPrice.toLocaleString('ru-RU')} ₽</span></div>
+                <div class="installment-row"><span class="installment-label">1-й платёж (сегодня):</span><span class="installment-amount">${p.payment1.toLocaleString('ru-RU')} ₽</span></div>
+                <div class="installment-row"><span class="installment-label">2-й платёж (через 4 недели):</span><span class="installment-amount">${p.payment2.toLocaleString('ru-RU')} ₽</span></div>`;
         }
 
         function renderInstallment3() {
             const config = tariffsConfig[currentTariff].installmentM1;
             const p = config.parts3;
             document.getElementById('installmentPlan3').innerHTML = `
-                <div class="installment-row">
-                    <span class="installment-label">Цена М1 со скидкой 20%:</span>
-                    <span class="installment-amount">${config.discountedPrice.toLocaleString('ru-RU')} ₽</span>
-                </div>
-                <div class="installment-row">
-                    <span class="installment-label">1-й платёж (сегодня):</span>
-                    <span class="installment-amount">${p.payment1.toLocaleString('ru-RU')} ₽</span>
-                </div>
-                <div class="installment-row">
-                    <span class="installment-label">2-й платёж (через 3 недели):</span>
-                    <span class="installment-amount">${p.payment2.toLocaleString('ru-RU')} ₽</span>
-                </div>
-                <div class="installment-row">
-                    <span class="installment-label">3-й платёж (через 5 недель):</span>
-                    <span class="installment-amount">${p.payment3.toLocaleString('ru-RU')} ₽</span>
-                </div>`;
+                <div class="installment-row"><span class="installment-label">Цена М1 со скидкой 20%:</span><span class="installment-amount">${config.discountedPrice.toLocaleString('ru-RU')} ₽</span></div>
+                <div class="installment-row"><span class="installment-label">1-й платёж (сегодня):</span><span class="installment-amount">${p.payment1.toLocaleString('ru-RU')} ₽</span></div>
+                <div class="installment-row"><span class="installment-label">2-й платёж (через 3 недели):</span><span class="installment-amount">${p.payment2.toLocaleString('ru-RU')} ₽</span></div>
+                <div class="installment-row"><span class="installment-label">3-й платёж (через 5 недель):</span><span class="installment-amount">${p.payment3.toLocaleString('ru-RU')} ₽</span></div>`;
         }
-        // ===== КЛАВИАТУРНАЯ НАВИГАЦИЯ =====
+
         document.addEventListener('keydown', function(e) {
             if (!discountCalculated) return;
-            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-                e.preventDefault();
-                sliderNext();
-            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-                e.preventDefault();
-                sliderPrev();
-            }
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); sliderNext(); }
+            else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); sliderPrev(); }
         });
     </script>
 </body>
